@@ -53,7 +53,7 @@ open class Bloc<Event, State>: Base<State> where State: Equatable, Event: Equata
      # Notes: #
      1. If not overridden, will fail with **preconditionFailure**
      */
-    open func mapEventToState(event: Event) -> State {
+    open func mapEventToState(event: Event) -> AnyPublisher<State, Never> {
         preconditionFailure("This method must be overridden")
     }
     /**
@@ -61,19 +61,16 @@ open class Bloc<Event, State>: Base<State> where State: Equatable, Event: Equata
      */
     private func bindEventsToStates() {
         $event
-            .compactMap({ [unowned self] (event) -> Transition<Event, State>? in
-                guard let event = event else {
-                    self.observer.onError(base: self, error: BlocError.noEvent)
-                    return nil
-                }
-                let nextState = self.mapEventToState(event: event)
-                return Transition(
-                    currentState: self.state,
-                    event: event,
-                    nextState: nextState
-                )
-            })
-            .map({ [unowned self] (transition) -> State in
+            .compactMap { $0 }
+            .flatMap { [unowned self] (event) in
+                self.mapEventToState(event: event!)
+                    .map { Transition(
+                        currentState: self.state,
+                        event: event!,
+                        nextState: $0)
+                    }
+            }
+            .map { [unowned self] (transition) -> State in
                 if transition.nextState == self.state && self.emitted {
                     self.observer.onError(base: self, error: CubitError.stateNotChanged)
                     return self.state
@@ -81,7 +78,7 @@ open class Bloc<Event, State>: Base<State> where State: Equatable, Event: Equata
                 self.observer.onTransition(bloc: self, transition: transition)
                 self.emitted = true
                 return transition.nextState
-            })
+            }
             .assign(to: \.state, on: self)
             .store(in: &cancellables)
     }

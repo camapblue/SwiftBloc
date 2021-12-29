@@ -1,3 +1,7 @@
+## [1.0.4] - 29.12.2021.
+
+* Support Asynchronous Map Event to State
+
 ## [1.0.3] - 14.11.2021.
 
 * Documentation typo fixes
