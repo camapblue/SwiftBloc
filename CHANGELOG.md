@@ -1,3 +1,7 @@
+## [1.0.5] - 31.12.2021.
+
+* Fix leak memory bug
+
 ## [1.0.4] - 29.12.2021.
 
 * Support Asynchronous Map Event to State
