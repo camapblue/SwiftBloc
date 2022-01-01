@@ -1,3 +1,7 @@
+## [1.0.7] - 01.01.2022.
+
+- Update Bloc to watch for Incoming Event with EventHandler
+
 ## [1.0.6] - 31.12.2021.
 
 * Fix all leak memory bug
