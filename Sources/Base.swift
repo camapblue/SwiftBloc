@@ -24,9 +24,9 @@ open class Base<State>: ObservableObject where State: Equatable {
      Will return a shared instance of **BlocObserver** which will notify about changes and transitions of states
      You may create a custom observer of **BlocObserver**
      */
-    lazy var observer = {
-        return BlocObserver()
-    }()
+    var observer: BlocObserver {
+        BlocObserver.shared
+    }
     /**
      Cubit constructor
      - parameter state: initial state.

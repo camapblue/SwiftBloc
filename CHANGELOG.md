@@ -1,3 +1,7 @@
+## [1.0.6] - 31.12.2021.
+
+* Fix all leak memory bug
+
 ## [1.0.5] - 31.12.2021.
 
 * Fix leak memory bug
