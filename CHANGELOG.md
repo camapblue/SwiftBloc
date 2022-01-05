@@ -1,3 +1,7 @@
+## [1.0.8] - 05.01.2022.
+
+- Update BlocTest for support bloc testing
+
 ## [1.0.7] - 01.01.2022.
 
 - Update Bloc to watch for Incoming Event with EventHandler
