@@ -1,3 +1,7 @@
+## [1.0.9] - 05.01.2022.
+
+- Add BlocProvider view and ProvideBlocModifier
+
 ## [1.0.8] - 05.01.2022.
 
 - Update BlocTest for support bloc testing
