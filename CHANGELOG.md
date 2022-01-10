@@ -1,3 +1,7 @@
+## [1.0.9] - 10.01.2022.
+
+- Fix warning when update state in BlocView action
+
 ## [1.0.8] - 05.01.2022.
 
 - Update BlocTest for support bloc testing
