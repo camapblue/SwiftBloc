@@ -1,6 +1,10 @@
-## [1.0.9] - 10.01.2022.
+## [1.0.10] - 10.01.2022.
 
 - Fix warning when update state in BlocView action
+
+## [1.0.9] - 05.01.2022.
+
+- Add BlocProvider view and ProvideBlocModifier
 
 ## [1.0.8] - 05.01.2022.
 
